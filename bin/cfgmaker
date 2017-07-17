@@ -1370,6 +1370,7 @@ sub addrouter() {
             for my $g (@{$$opt{"global"}}) {
                 my ($t,$fs);
                 $g =~ /^options\[([_^\$])\]:\s*(.*)$/i;
+		next unless (defined $1 && defined $2);
                 $t = $1;
                 $fs = $2;
                 $t =~ s/_/default/;
