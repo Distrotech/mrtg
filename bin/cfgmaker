@@ -699,7 +699,7 @@ ECHO
                         /^descr?$/ && do { if($$i{Descr}){ $if_title_desc = $if_snmp_descr; last } next };
                         /^alias$/ && do { if($$i{ifAlias}){ $if_title_desc = "$if_snmp_descr $if_snmp_alias $if_cisco_descr"; last } next };
                         /^name$/ && do { if($$i{Name}) {$if_title_desc = "#".$$i{Name}; last } next };
-                        /^catname$/ && do {$if_title_desc = $if_port_name; last };
+			/^catname$/ && do {$if_title_desc = "$if_port_name"." (".$$i{Name}.($$i{vmVlan} ? " - VLAN ".$$i{vmVlan} : " - dot1q").")"; last};
                         /^ppname$/ && do {$if_title_desc = $if_pp_port_name; last};
                         /^type$/ && do { if($$i{Type}) { $if_title_desc = "%".$$i{Type}; last } next };
                         /^nr$/ && do {$if_title_desc = "Interface $ifindex"; last};
